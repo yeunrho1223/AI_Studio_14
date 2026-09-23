@@ -1,0 +1,6 @@
+{
+  "name": "고속버스 운행 정보",
+  "description": "국토교통부 (TAGO) 고속버스정보 공공데이터 API를 활용한 실시간 고속버스 노선, 배차 시간표 및 요금 조회",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
