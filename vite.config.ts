@@ -6,6 +6,17 @@ import {defineConfig} from 'vite';
 export default defineConfig(() => {
   return {
     plugins: [react(), tailwindcss()],
+    define: {
+      'import.meta.env.VITE_GEMINI_API_KEY': JSON.stringify(
+        process.env.VITE_GEMINI_API_KEY || process.env.GEMINI_API_KEY || ''
+      ),
+      'import.meta.env.VITE_TAGE_API_KEY': JSON.stringify(
+        process.env.VITE_TAGE_API_KEY || process.env.VITE_TAGO_API_KEY || process.env.TAGO_API_KEY || process.env.TAGO || ''
+      ),
+      'import.meta.env.VITE_TAGO_API_KEY': JSON.stringify(
+        process.env.VITE_TAGE_API_KEY || process.env.VITE_TAGO_API_KEY || process.env.TAGO_API_KEY || process.env.TAGO || ''
+      ),
+    },
     resolve: {
       alias: {
         '@': path.resolve(import.meta.dirname ?? '.', '.'),

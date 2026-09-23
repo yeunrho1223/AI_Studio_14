@@ -92,7 +92,7 @@ export const ApiInfoModal: React.FC<ApiInfoModalProps> = ({
                 <strong>국토교통부_(TAGO)_고속버스정보</strong> 서비스의 <strong>일반 인증키(Encoding 또는 Decoding)</strong>를 복사합니다.
               </li>
               <li>
-                본 AI Studio 앱의 <strong>설정(Settings) &gt; Secrets</strong> 메뉴에서 변수명 <code>TAGO_API_KEY</code>로 값을 입력합니다.
+                본 AI Studio 앱의 <strong>설정(Settings) &gt; Secrets</strong> 메뉴에서 변수명 <code>VITE_TAGE_API_KEY</code> (또는 <code>TAGO_API_KEY</code>)로 값을 입력합니다.
               </li>
               <li>
                 인증키를 발급받은 직후라면 공공데이터포털 서버의 인증 동기화에 <strong>약 1~2시간</strong> 정도 소요될 수 있습니다. 동기화 완료 전까지는 안전하게 시뮬레이션 배차 정보가 제공됩니다.

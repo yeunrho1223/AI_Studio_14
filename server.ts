@@ -7,6 +7,29 @@ import { BusSchedule, ScheduleResponse, ApiStatusResponse, Terminal } from './sr
 
 dotenv.config();
 
+// Ensure bidirectional synchronization between VITE_GEMINI_API_KEY and GEMINI_API_KEY
+if (!process.env.VITE_GEMINI_API_KEY && process.env.GEMINI_API_KEY) {
+  process.env.VITE_GEMINI_API_KEY = process.env.GEMINI_API_KEY;
+}
+if (!process.env.GEMINI_API_KEY && process.env.VITE_GEMINI_API_KEY) {
+  process.env.GEMINI_API_KEY = process.env.VITE_GEMINI_API_KEY;
+}
+
+// Ensure bidirectional synchronization between VITE_TAGE_API_KEY, VITE_TAGO_API_KEY, and TAGO_API_KEY
+const resolvedTagoKey =
+  process.env.VITE_TAGE_API_KEY ||
+  process.env.VITE_TAGO_API_KEY ||
+  process.env.TAGO_API_KEY ||
+  process.env.TAGO ||
+  process.env.TAGO_KEY;
+
+if (resolvedTagoKey) {
+  process.env.VITE_TAGE_API_KEY = resolvedTagoKey;
+  process.env.VITE_TAGO_API_KEY = resolvedTagoKey;
+  process.env.TAGO_API_KEY = resolvedTagoKey;
+  process.env.TAGO = resolvedTagoKey;
+}
+
 const app = express();
 const PORT = 3000;
 
@@ -15,6 +38,8 @@ app.use(express.json());
 // Helper to get configured service key
 function getServiceKey(): string | null {
   const key =
+    process.env.VITE_TAGE_API_KEY ||
+    process.env.VITE_TAGO_API_KEY ||
     process.env.TAGO_API_KEY ||
     process.env.DATA_GO_KR_API_KEY ||
     process.env.SERVICE_KEY ||
@@ -22,7 +47,7 @@ function getServiceKey(): string | null {
     process.env.TAGO_KEY ||
     null;
 
-  if (!key || key.trim() === '' || key === 'MY_TAGO_API_KEY') {
+  if (!key || key.trim() === '' || key === 'MY_TAGO_API_KEY' || key === 'MY_TAGE_API_KEY') {
     return null;
   }
   return key.trim();
