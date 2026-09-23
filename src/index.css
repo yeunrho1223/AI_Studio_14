@@ -1,1 +1,29 @@
 @import "tailwindcss";
+
+@theme {
+  --color-dusty-grape: #56638a;
+  --color-vintage-grape: #483a58;
+  --color-powder-blue: #a3c3d9;
+  --color-muted-olive: #a8c686;
+  --color-crimson-violet: #56203d;
+  --color-neon-pink: #FF206E;
+}
+
+@layer base {
+  :root {
+    --dusty-grape: #56638a;
+    --vintage-grape: #483a58;
+    --powder-blue: #a3c3d9;
+    --muted-olive: #a8c686;
+    --crimson-violet: #56203d;
+    --neon-pink: #FF206E;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", "Inter", system-ui, sans-serif;
+    background-color: #f7f8fa;
+    color: #FF206E;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    letter-spacing: -0.015em;
+  }
+}
