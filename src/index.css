@@ -1,29 +1,54 @@
 @import "tailwindcss";
 
 @theme {
-  --color-dusty-grape: #56638a;
-  --color-vintage-grape: #483a58;
-  --color-powder-blue: #a3c3d9;
-  --color-muted-olive: #a8c686;
-  --color-crimson-violet: #56203d;
-  --color-neon-pink: #FF206E;
+  --color-nhis-red: #e30613;
+  --color-nhis-red-hover: #c40510;
+  --color-nhis-deep-blue: #003b7b;
+  --color-nhis-deep-blue-hover: #002b5c;
+  --color-nhis-health-green: #00a05b;
+  --color-canvas: #ffffff;
+  --color-surface-soft: #f7f9fa;
+  --color-field: #f0f3f5;
+  --color-border-soft: #e2e8f0;
+  --color-border: #cbd5e1;
+  --color-ink: #1e293b;
+  --color-text-muted: #64748b;
+  --color-text-faint: #94a3b8;
 }
 
 @layer base {
   :root {
-    --dusty-grape: #56638a;
-    --vintage-grape: #483a58;
-    --powder-blue: #a3c3d9;
-    --muted-olive: #a8c686;
-    --crimson-violet: #56203d;
-    --neon-pink: #FF206E;
+    --primary: #e30613;
+    --secondary: #003b7b;
+    --accent: #00a05b;
+    --canvas: #ffffff;
+    --surface-soft: #f7f9fa;
+    --field: #f0f3f5;
+    --border-soft: #e2e8f0;
+    --border: #cbd5e1;
+    --ink: #1e293b;
+    --text-muted: #64748b;
+    --text-faint: #94a3b8;
   }
   body {
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", "Inter", system-ui, sans-serif;
-    background-color: #f7f8fa;
-    color: #FF206E;
+    font-family: Pretendard, "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", system-ui, sans-serif;
+    background-color: #f7f9fa;
+    color: #1e293b;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    letter-spacing: -0.015em;
+    line-height: 1.6;
+    letter-spacing: -0.01em;
+  }
+
+  /* Number and tabular figures */
+  .font-num {
+    font-family: Inter, Pretendard, system-ui, -apple-system, sans-serif;
+    font-feature-settings: "tnum";
+  }
+
+  /* Keyboard accessibility focus ring */
+  *:focus-visible {
+    outline: 2px solid #e30613;
+    outline-offset: 2px;
   }
 }

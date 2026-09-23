@@ -15,18 +15,18 @@ if (!process.env.GEMINI_API_KEY && process.env.VITE_GEMINI_API_KEY) {
   process.env.GEMINI_API_KEY = process.env.VITE_GEMINI_API_KEY;
 }
 
-// Ensure bidirectional synchronization between VITE_TAGE_API_KEY, VITE_TAGO_API_KEY, and TAGO_API_KEY
+// Ensure bidirectional synchronization between VITE_TAGO_API_KEY, TAGO_API_KEY, and VITE_TAGE_API_KEY
 const resolvedTagoKey =
-  process.env.VITE_TAGE_API_KEY ||
   process.env.VITE_TAGO_API_KEY ||
   process.env.TAGO_API_KEY ||
+  process.env.VITE_TAGE_API_KEY ||
   process.env.TAGO ||
   process.env.TAGO_KEY;
 
 if (resolvedTagoKey) {
-  process.env.VITE_TAGE_API_KEY = resolvedTagoKey;
   process.env.VITE_TAGO_API_KEY = resolvedTagoKey;
   process.env.TAGO_API_KEY = resolvedTagoKey;
+  process.env.VITE_TAGE_API_KEY = resolvedTagoKey;
   process.env.TAGO = resolvedTagoKey;
 }
 
@@ -38,9 +38,9 @@ app.use(express.json());
 // Helper to get configured service key
 function getServiceKey(): string | null {
   const key =
-    process.env.VITE_TAGE_API_KEY ||
     process.env.VITE_TAGO_API_KEY ||
     process.env.TAGO_API_KEY ||
+    process.env.VITE_TAGE_API_KEY ||
     process.env.DATA_GO_KR_API_KEY ||
     process.env.SERVICE_KEY ||
     process.env.TAGO ||
@@ -289,8 +289,8 @@ app.get('/api/bus/status', (req, res) => {
     keyPrefix: key ? `${key.substring(0, 5)}...` : undefined,
     mode: key ? 'live' : 'mock',
     message: key
-      ? '국토교통부(TAGO) 고속버스정보 공공데이터 API 키가 성공적으로 연결되었습니다.'
-      : 'TAGO API 키가 아직 설정되지 않았습니다. AI Studio의 Settings에서 TAGO_API_KEY를 등록할 수 있습니다.',
+      ? '국토교통부(TAGO) 고속버스정보 공공데이터 API 키(VITE_TAGO_API_KEY)가 성공적으로 연결되었습니다.'
+      : 'TAGO API 키가 아직 설정되지 않았습니다. 환경변수에 VITE_TAGO_API_KEY 또는 TAGO_API_KEY를 등록할 수 있습니다.',
   };
   res.json(response);
 });
@@ -340,7 +340,7 @@ app.get('/api/bus/schedule', async (req, res) => {
       totalCount: mockData.length,
       data: mockData,
       notice:
-        '공공데이터포털 TAGO API 키가 설정되지 않아 사전 배차 데이터로 안내 중입니다. Settings에서 TAGO_API_KEY를 설정하시면 실시간 조회가 연동됩니다.',
+        '공공데이터포털 TAGO API 키가 설정되지 않아 사전 배차 데이터로 안내 중입니다. 환경변수 VITE_TAGO_API_KEY를 설정하시면 실시간 조회가 연동됩니다.',
     };
     res.json(resp);
     return;

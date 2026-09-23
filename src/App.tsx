@@ -105,25 +105,26 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#f7f8fa] text-[#FF206E] flex flex-col font-sans selection:bg-[#FF206E]/20 selection:text-[#FF206E]">
+    <div className="min-h-screen bg-[#f4f6f9] text-[#222222] flex flex-col font-sans selection:bg-[#004ea2]/15 selection:text-[#004ea2]">
       {/* Navigation */}
       <Navbar
         apiStatus={apiStatus}
         onOpenInfoModal={() => setInfoModalOpen(true)}
       />
 
-      {/* Main Content Area */}
-      <main className="flex-1 max-w-4xl w-full mx-auto px-4 sm:px-6 py-8 sm:py-12">
-        {/* Hero Header */}
-        <div className="text-center mb-8 sm:mb-12">
-          <p className="text-[14px] sm:text-[15px] font-semibold text-[#FF206E]/80 tracking-normal mb-1">
-            대한민국 국토교통부 TAGO 공공데이터 연계
-          </p>
-          <h2 className="text-[36px] sm:text-[48px] md:text-[56px] font-semibold text-[#FF206E] tracking-[-0.025em] leading-[1.08]">
-            어디로 떠나시나요.
+      {/* Main Content Area (1280px Grid Container Standard) */}
+      <main className="flex-1 max-w-[1280px] w-full mx-auto px-4 sm:px-6 py-8 sm:py-10">
+        {/* NHIS Standard Hero Section */}
+        <div className="text-center mb-8 sm:mb-10">
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#E30613]/10 text-[#E30613] text-[13px] font-bold mb-3">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#E30613]" />
+            <span>대한민국 국토교통부 TAGO 공공데이터 포털 공식 연동</span>
+          </div>
+          <h2 className="text-[32px] sm:text-[38px] font-bold text-[#1E293B] tracking-[-0.015em] leading-[1.25]">
+            전국 고속버스 실시간 운행정보
           </h2>
-          <p className="text-[17px] sm:text-[19px] text-[#FF206E]/85 font-normal leading-[1.47] mt-3 max-w-xl mx-auto">
-            전국 453개 공식 고속버스 터미널의 실시간 배차 시간표와 성인 운임을 가장 빠르고 선명하게 확인하세요.
+          <p className="text-[16px] text-[#64748B] font-normal leading-[1.60] mt-2.5 max-w-2xl mx-auto">
+            전국 453개 공식 고속버스 터미널의 실시간 배차 시간표, 잔여석 및 표준 운임을 신속하고 정확하게 조회하실 수 있습니다.
           </p>
         </div>
 
@@ -166,17 +167,40 @@ export default function App() {
         />
       </main>
 
-      {/* Footer */}
-      <footer className="border-t border-[#a3c3d9]/40 bg-[#f0f3f8] py-12 px-4 text-center text-[12px] text-[#FF206E]/80">
-        <div className="max-w-4xl mx-auto space-y-2 leading-relaxed">
-          <p>
-            본 서비스는 <strong className="text-[#FF206E]">국토교통부 (TAGO) 고속버스정보 공공데이터 Open API</strong>를 연계하여 실시간 운행 데이터를 제공합니다.
+      {/* Surface Deep Blue Footer (#003B7B - NHIS Deep Blue Trust Standard) */}
+      <footer className="border-t border-[#002B5C] bg-[#003B7B] text-white py-10 px-4 text-center text-[13px] mt-12">
+        <div className="max-w-[1280px] mx-auto space-y-3 leading-[1.6] text-white/80">
+          <div className="flex flex-wrap items-center justify-center gap-4 text-[13px] text-white/90 font-medium pb-2 border-b border-white/15">
+            <span className="text-white font-bold flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-[#E30613]" />
+              h-well 대국민 교통 공공데이터포털 연계
+            </span>
+            <span className="text-white/30">|</span>
+            <button
+              type="button"
+              onClick={() => setInfoModalOpen(true)}
+              className="text-white/85 hover:text-white underline hover:no-underline transition-colors"
+            >
+              API 서비스 안내
+            </button>
+            <span className="text-white/30">|</span>
+            <a
+              href="https://www.kobus.co.kr"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/85 hover:text-white underline hover:no-underline transition-colors"
+            >
+              코버스(KOBUS) 승차권 예약
+            </a>
+          </div>
+          <p className="text-[13px] text-white/80 leading-[1.6]">
+            본 서비스는 <strong className="text-white font-semibold">국토교통부 (TAGO) 고속버스정보 공공데이터 Open API</strong>를 표준 준수 연계하여 실시간 운행 시간표와 성인 운임을 제공합니다.
           </p>
-          <p>
-            운행 시간표 및 운임은 도로 교통 상황 및 운송 사업자의 사정에 따라 변경될 수 있습니다. 실제 승차권 예매 및 발권은 <strong className="text-[#FF206E]">코버스(KOBUS)</strong> 또는 <strong className="text-[#FF206E]">티머니GO</strong> 공식 시스템을 이용해 주시기 바랍니다.
+          <p className="text-[12px] text-white/65 leading-[1.5]">
+            운행 시간표 및 운임은 도로 교통 상황 및 운송 사업자의 사정에 따라 변경될 수 있습니다. 실제 승차권 예매 및 발권은 코버스(KOBUS) 또는 티머니GO 공식 시스템을 이용해 주시기 바랍니다.
           </p>
-          <p className="pt-2 text-[11px] text-[#FF206E]/60">
-            Copyright © {new Date().getFullYear()} 고속버스 운행 정보. All rights reserved.
+          <p className="pt-2 text-[11px] text-white/50 tracking-normal font-normal">
+            Copyright © {new Date().getFullYear()} 국민건강보험공단 연계 대국민 대중교통 공공정보 포털. All rights reserved.
           </p>
         </div>
       </footer>
